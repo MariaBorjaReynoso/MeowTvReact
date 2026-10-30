@@ -2,6 +2,10 @@
   Name: Maria Reynoso
   Date: 10.30.2026
   CSC 372-01
+   
+  File: App.jsx
+  The main parent component. It holds the search state (query, results, status)
+  and sets up the React Router routes. It passes state down to child components as props.
 */
 
 import { useState, useEffect } from "react";
@@ -11,11 +15,14 @@ import ShowList from "./components/ShowList.jsx";
 import ShowDetail from "./components/ShowDetail.jsx";
 
 export default function App() {
+  // State: The current search term (starts as "friends")
   const [query, setQuery] = useState("friends");
+  // State: The list of shows returned by the API
   const [results, setResults] = useState([]);
-  const [status, setStatus] = useState("idle"); // idle | loading | error | empty | success
+  // State: Tracks if we are loading, have an error, or have results
+  const [status, setStatus] = useState("idle");
 
-  // Fetch shows whenever the query changes
+  // useEffect runs whenever the 'query' changes
   useEffect(() => {
     async function fetchShows() {
       if (!query.trim()) {
@@ -26,11 +33,13 @@ export default function App() {
 
       setStatus("loading");
       try {
+        // Fetch data from the TVmaze API
         const res = await fetch("https://api.tvmaze.com/search/shows?q=" + encodeURIComponent(query));
         if (!res.ok) throw new Error("HTTP " + res.status);
         
         const data = await res.json();
-        setResults(data.slice(0, 10)); // Max 10 shows
+        // Keep only the top 10 results
+        setResults(data.slice(0, 10)); 
         setStatus(data.length ? "success" : "empty");
       } catch (err) {
         console.error(err);
@@ -38,12 +47,13 @@ export default function App() {
       }
     }
     fetchShows();
-  }, [query]);
+  }, [query]); // The empty bracket [query] means "run this when query changes"
 
   return (
     <div>
       <header>
         <h1>MeowTV Show Gallery</h1>
+        {/* Show the search form ONLY on the main gallery page */}
         <Routes>
           <Route path="/" element={<SearchForm query={query} onSearch={setQuery} />} />
         </Routes>
@@ -51,6 +61,7 @@ export default function App() {
 
       <main>
         <Routes>
+          {/* Route 1: The Home Gallery Page */}
           <Route 
             path="/" 
             element={
@@ -67,6 +78,7 @@ export default function App() {
               </>
             } 
           />
+          {/* Route 2: The Detail Page (when you click a show) */}
           <Route path="/shows/:id" element={<ShowDetail />} />
         </Routes>
       </main>

@@ -2,16 +2,24 @@
   Name: Maria Reynoso
   Date: 10.30.2026
   CSC 372-01
+  
+  File: ShowDetail.jsx
+  Description: The detail page for a single show. It reads the show ID from the URL using 
+  useParams, fetches the full show data and the full cast list (up to 15), and provides 
+  a Link back to the main gallery.
 */
 
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
 export default function ShowDetail() {
-  const { id } = useParams();
+  // useParams grabs the :id from the URL (e.g., /shows/123 -> id is "123")
+  const { id } = useParams(); 
+  
   const [show, setShow] = useState(null);
   const [cast, setCast] = useState([]);
 
+  // Fetch the full show data and cast whenever the ID in the URL changes
   useEffect(() => {
     async function fetchShow() {
       try {
@@ -21,9 +29,11 @@ export default function ShowDetail() {
         setShow(data);
 
         const castRes = await fetch("https://api.tvmaze.com/shows/" + id + "/cast");
-        if (!res.ok) throw new Error("HTTP " + res.status);
+        if (!castRes.ok) throw new Error("HTTP " + castRes.status);
         const castData = await castRes.json();
-        setCast(castData.slice(0, 15)); // Up to 15 cast members
+        
+        // Save up to 15 cast members
+        setCast(castData.slice(0, 15)); 
       } catch (err) {
         console.error("Failed to load show details", err);
       }
@@ -31,10 +41,12 @@ export default function ShowDetail() {
     fetchShow();
   }, [id]);
 
+  // If 'show' is still null, we are still waiting for the fetch to finish
   if (!show) return <p>Loading...</p>;
 
   return (
     <div>
+      {/* Link takes you back to the main page without reloading */}
       <Link to="/">Back to Gallery</Link>
       <h2>{show.name}</h2>
       <p dangerouslySetInnerHTML={{ __html: show.summary || "Not available" }}></p>
@@ -44,6 +56,7 @@ export default function ShowDetail() {
 
       <h3>Cast</h3>
       <ul>
+        {/* Loop through the cast array and display the actor and character name */}
         {cast.map((entry) => (
           <li key={entry.person.id}>
             {entry.person.name} as {entry.character ? entry.character.name : "Unknown"}
