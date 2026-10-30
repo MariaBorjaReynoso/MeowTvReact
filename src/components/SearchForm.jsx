@@ -3,8 +3,7 @@
   Date: 10.30.2026
   CSC 372-01
   
-  File: SearchForm.jsx
-  Description: A controlled form component. It keeps track of what the user is typing
+ A controlled form component. It keeps track of what the user is typing
   and sends that value up to the App component when the form is submitted.
 */
 
