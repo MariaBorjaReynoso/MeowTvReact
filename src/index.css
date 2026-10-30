@@ -1,3 +1,4 @@
+/*creating the flexbox */
 body { font-family: sans-serif; padding: 1rem; background: #f4f4f4; }
 .show-list { display: flex; flex-wrap: wrap; gap: 1rem; }
 .show-card { background: white; padding: 1rem; width: 300px; border: 1px solid #ccc; }
