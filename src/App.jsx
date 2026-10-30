@@ -3,7 +3,6 @@
   Date: 10.30.2026
   CSC 372-01
    
-  File: App.jsx
   The main parent component. It holds the search state (query, results, status)
   and sets up the React Router routes. It passes state down to child components as props.
 */
