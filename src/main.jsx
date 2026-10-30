@@ -3,7 +3,6 @@
   Date: 10.30.2026
   CSC 372-01
   
-  File: main.jsx 
  This is the entry point for the React app. It finds the <div id="root">
   in index.html, wraps our App in BrowserRouter (so we can use pages/URLs), and renders it.
 */
