@@ -3,8 +3,7 @@
   Date: 10.30.2026
   CSC 372-01
   
-  File: ShowDetail.jsx
-  Description: The detail page for a single show. It reads the show ID from the URL using 
+  The detail page for a single show. It reads the show ID from the URL using 
   useParams, fetches the full show data and the full cast list (up to 15), and provides 
   a Link back to the main gallery.
 */
