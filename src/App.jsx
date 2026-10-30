@@ -2,9 +2,9 @@
   Name: Maria Reynoso
   Date: 10.30.2026
   CSC 372-01
-   
+
   The main parent component. It holds the search state (query, results, status)
-  and sets up the React Router routes. It passes state down to child components as props.
+  and sets up the React Router routes. It passes state down to child components as props
 */
 
 import { useState, useEffect } from "react";
@@ -14,11 +14,11 @@ import ShowList from "./components/ShowList.jsx";
 import ShowDetail from "./components/ShowDetail.jsx";
 
 export default function App() {
-  // State: The current search term (starts as "friends")
+  // State The current search term (starts as "friends")
   const [query, setQuery] = useState("friends");
-  // State: The list of shows returned by the API
+  // State The list of shows returned by the API
   const [results, setResults] = useState([]);
-  // State: Tracks if we are loading, have an error, or have results
+  // State Tracks if we are loading, have an error, or have results
   const [status, setStatus] = useState("idle");
 
   // useEffect runs whenever the 'query' changes
