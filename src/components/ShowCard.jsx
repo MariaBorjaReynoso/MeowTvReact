@@ -3,8 +3,7 @@
   Date: 10.30.2026
   CSC 372-01
   
-  File: ShowCard.jsx
-  Description: Displays a single show card. It fetches the cast list specifically for 
+  Displays a single show card. It fetches the cast list specifically for 
   this show using useEffect. It also has a Link to go to the ShowDetail page.
 */
 
