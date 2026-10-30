@@ -1,27 +1,24 @@
 # MeowTV Show Gallery (React)
 
-By Maria Reynoso - CSC 372-01, Fall 2026
+A React single page app that lets you search for TV shows and view show details. 
 
-A React single-page app that lets you search for TV shows and view show details.
-
-## How to run
-
-npm install
-npm run dev
-
-Open `http://localhost:5173`.
+## How to Run
+Run these commands in the terminal:
+`npm install`
+`npm run dev`
+Then open `http://localhost:5173`.
 
 ## Required React Concepts
 
-| # | Concept | Where it appears |
+| # | Concept | File(s) Where It Appears |
 |---|---|---|
 | 1 | Components and props | `src/App.jsx`, `src/components/SearchForm.jsx`, `ShowList.jsx`, `ShowCard.jsx`, `ShowDetail.jsx` |
 | 2 | Lists and keys | `ShowList.jsx` (`key={result.show.id}`), `ShowDetail.jsx` (`key={entry.person.id}`) |
-| 3 | Conditional rendering | `App.jsx` (loading / empty / success), `ShowDetail.jsx` (if `!show` return loading) |
+| 3 | Conditional rendering | `App.jsx` (loading/error/empty states), `ShowDetail.jsx` (if `!show` return loading) |
 | 4 | Controlled form | `SearchForm.jsx` (`value={inputValue}`, `onChange`, `onSubmit` with `preventDefault`) |
 | 5 | State | `App.jsx` (`query`, `results`, `status`), `ShowCard.jsx` (cast), `ShowDetail.jsx` (show, cast) |
 | 6 | Effects and fetch | `App.jsx` (search), `ShowCard.jsx` (per-card cast fetch), `ShowDetail.jsx` (single show) |
-| 7 | Lifted state | `App.jsx` owns `query` and `results`; `SearchForm` updates it via `onSearch` prop |
+| 7 | Lifted state | `App.jsx` owns `query` and `results`; `SearchForm` updates it via the `onSearch` prop |
 | 8 | Routing | `main.jsx` (`BrowserRouter`), `App.jsx` (`Routes`), `ShowCard.jsx` (`Link`), `ShowDetail.jsx` (`useParams`) |
 
 ## Reflection
