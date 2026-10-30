@@ -3,8 +3,7 @@
   Date: 10.30.2026
   CSC 372-01
   
-  File: ShowList.jsx
-  Description: A simple component that receives an array of show results. It loops through
+  A simple component that receives an array of show results. It loops through
   the array (using map) and creates a ShowCard for each show, using the show ID as a key.
 */
 
